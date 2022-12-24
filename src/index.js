@@ -1,4 +1,5 @@
 import wrapper from "./content.js";
+import footer from "./footer/footer.js";
 
 function component() {
 	const element = document.createElement("div");
@@ -11,3 +12,4 @@ function component() {
 
 document.body.appendChild(component());
 document.body.appendChild(wrapper());
+document.body.appendChild(footer());
