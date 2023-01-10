@@ -1,0 +1,4 @@
+-   write own npm package
+-   write npm package manager that sets up complete webpack config
+-   make alias/ func for git add and git commit
+-   see questions in these files.

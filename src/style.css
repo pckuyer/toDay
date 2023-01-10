@@ -1,0 +1,29 @@
+body {
+	background-color: lightcoral;
+}
+
+aside {
+	display: none;
+}
+
+.plusButton {
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	background-color: white;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.cardNode,
+.newCardButtonContainer {
+	background-color: rgba(200, 200, 200, 1);
+	width: 80%;
+	height: 140px;
+	margin-block: 10px;
+}
+
+.newCardButtonContainer {
+	display: grid;
+	place-items: center;
+}
