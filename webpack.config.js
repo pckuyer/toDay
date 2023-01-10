@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
-    content: "./src/content.js", //why is this necessary?
+    // content: "./src/content.js", //why is this necessary?
   },
   devtool: "inline-source-map",
   devServer: {
@@ -13,8 +13,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      // hash: true,
       title: "toDay",
-      //how can I get language here?
+      template: "./src/index.html",
     }),
   ],
   output: {
