@@ -26,8 +26,15 @@ document.querySelector("main").appendChild(cardsWrapper());
 const cardsContainer = document.querySelector(".cardsWrapper");
 cardsContainer.appendChild(newCardButtonContainer());
 
-for (let i = 0; i < allCards.length; i++) {
-	cardsContainer.appendChild(createNewCard(allCards[i]));
+// for (let i = 0; i < allCards.length; i++) {
+// 	cardsContainer.appendChild(createNewCard(allCards[i]));
+// }
+
+for (var i = 0; i < localStorage.length; i++) {
+	// do something with localStorage.getItem(localStorage.key(i));
+	cardsContainer.appendChild(
+		createNewCard(localStorage.getItem(localStorage.key(i)))
+	);
 }
 
 document.body.appendChild(aside());

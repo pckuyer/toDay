@@ -18,8 +18,10 @@ function toggleNewCardInput() {
 				"input[name='title']"
 			).value;
 			if (titleInput.length > 0) {
-				console.log("there is a title");
 				cardEntry(titleInput);
+				newCardForm.reset();
+
+				//should it go back to showing the plusbtn?  (this makes adding more cards a two step process)
 			}
 		}
 	);

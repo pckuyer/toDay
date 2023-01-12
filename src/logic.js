@@ -18,20 +18,12 @@ const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 	//set unique identifier
 	card.id = Date.now();
 
-	return card;
+	const cardJSON = JSON.stringify(card);
+
+	localStorage.setItem(`card${card.id}`, cardJSON);
+
+	// return card;
 };
-
-//manually making test card
-const card1 = cardEntry("test1", "this card", "22-11-2023", "high");
-const card2 = cardEntry("test2", "this is a card", "01-01-2023", "low");
-const card3 = cardEntry("test3", "Card", "31-09-2024");
-const card4 = cardEntry("test4", "kaart", undefined, "high");
-
-//pushing test card to array which contains all cards.
-allCards.push(card1);
-allCards.push(card2);
-allCards.push(card3);
-allCards.push(card4);
 
 // Default export
 export { allCards, cardEntry };
