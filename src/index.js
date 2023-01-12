@@ -5,12 +5,12 @@ import {
 	header,
 	main,
 	cardsWrapper, // kan direct in main?
-	newCardForm, // not used
+	newCardForm, // not used here
 	newCardButtonContainer,
 	createNewCard,
 	aside,
-	toggleNewCardInput,
 } from "./components.js";
+import { toggleNewCardInput } from "./DOM.js";
 
 //css modules
 import "../node_modules/reset-css/reset.css";
@@ -33,6 +33,8 @@ for (let i = 0; i < allCards.length; i++) {
 document.body.appendChild(aside());
 
 document.body.appendChild(footer());
+
+//is this the right place to put event listeners?
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	const plusButton = document.querySelector(".plusButton");
