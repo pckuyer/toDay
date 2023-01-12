@@ -1,4 +1,5 @@
 import { newCardForm } from "./components.js";
+import { cardEntry } from "./logic.js";
 
 function toggleNewCardInput() {
 	const plusButton = document.querySelector(".plusButton");
@@ -11,15 +12,17 @@ function toggleNewCardInput() {
 	submitNewCardBtn.addEventListener(
 		"click",
 		function submitNewCardForm(event) {
-			//to do
-			alert("hoi");
-			// return false;
+			//
+			const newCardForm = document.querySelector(".newCardForm");
+			const titleInput = newCardForm.querySelector(
+				"input[name='title']"
+			).value;
+			if (titleInput.length > 0) {
+				console.log("there is a title");
+				cardEntry(titleInput);
+			}
 		}
 	);
 }
 
-function submitNewCardForm() {
-	//
-}
-
-export { toggleNewCardInput, submitNewCardForm };
+export { toggleNewCardInput };

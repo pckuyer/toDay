@@ -94,7 +94,9 @@ function newCardForm() {
 	inputBtn.setAttribute("id", "submitNewCardBtn");
 	inputBtn.innerHTML = "submit";
 	form.appendChild(inputBtn);
+
 	form.setAttribute("onsubmit", "return false");
+	form.classList.add("newCardForm");
 
 	element.appendChild(form);
 	return element;

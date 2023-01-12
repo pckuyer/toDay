@@ -34,4 +34,4 @@ allCards.push(card3);
 allCards.push(card4);
 
 // Default export
-export { allCards };
+export { allCards, cardEntry };
