@@ -12,13 +12,25 @@ function toggleNewCardInput() {
 	submitNewCardBtn.addEventListener(
 		"click",
 		function submitNewCardForm(event) {
-			//
 			const newCardForm = document.querySelector(".newCardForm");
+
+			//title
 			const titleInput = newCardForm.querySelector(
 				"input[name='title']"
 			).value;
+
+			const descriptionInput = newCardForm.querySelector(
+				"input[name='description']"
+			).value;
+
+			const dueDateInput = newCardForm.querySelector(
+				"input[name='due date']"
+			).value;
+
+			//add priority (also change default value for select )
+
 			if (titleInput.length > 0) {
-				cardEntry(titleInput);
+				cardEntry(titleInput, descriptionInput, dueDateInput);
 				newCardForm.reset();
 
 				//should it go back to showing the plusbtn?  (this makes adding more cards a two step process)

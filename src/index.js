@@ -32,9 +32,8 @@ cardsContainer.appendChild(newCardButtonContainer());
 
 for (var i = 0; i < localStorage.length; i++) {
 	// do something with localStorage.getItem(localStorage.key(i));
-	cardsContainer.appendChild(
-		createNewCard(localStorage.getItem(localStorage.key(i)))
-	);
+	let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+	cardsContainer.appendChild(createNewCard(obj));
 }
 
 document.body.appendChild(aside());
