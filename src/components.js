@@ -68,6 +68,12 @@ function newCardForm() {
 	const prioritySelect = document.createElement("select");
 	prioritySelect.setAttribute("name", "priority");
 
+	const option0 = document.createElement("option");
+	option0.innerHTML = "none";
+	option0.setAttribute("value", NaN);
+	option0.setAttribute("selected", "selected");
+	prioritySelect.appendChild(option0);
+
 	const option1 = document.createElement("option");
 	option1.innerHTML = "low";
 	option1.setAttribute("value", "low");

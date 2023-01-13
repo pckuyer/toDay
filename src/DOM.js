@@ -28,9 +28,17 @@ function toggleNewCardInput() {
 			).value;
 
 			//add priority (also change default value for select )
+			const priorityInput = newCardForm.querySelector(
+				"select[name='priority'] option:checked"
+			).value;
 
 			if (titleInput.length > 0) {
-				cardEntry(titleInput, descriptionInput, dueDateInput);
+				cardEntry(
+					titleInput,
+					descriptionInput,
+					dueDateInput,
+					priorityInput
+				);
 				newCardForm.reset();
 
 				//should it go back to showing the plusbtn?  (this makes adding more cards a two step process)
