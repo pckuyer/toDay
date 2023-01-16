@@ -1,6 +1,5 @@
 // js modules
 import footer from "./footer/footer.js";
-import { allCards } from "./logic.js";
 import {
 	header,
 	main,
@@ -8,6 +7,7 @@ import {
 	newCardForm, // not used here
 	formContainer,
 	createNewCard,
+	getAndSortLocalStorage,
 	aside,
 } from "./components.js";
 import { submitNewCardInput } from "./DOM.js";
@@ -26,11 +26,13 @@ document.querySelector("main").appendChild(cardsWrapper());
 const cardsContainer = document.querySelector(".cardsWrapper");
 cardsContainer.appendChild(formContainer());
 
-//create a card for each element in localstorage (this presuposes everything in local storage is a card)
-for (var i = 0; i < localStorage.length; i++) {
-	let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-	cardsContainer.appendChild(createNewCard(obj));
-}
+const allCards = getAndSortLocalStorage();
+
+allCards.forEach((element) => {
+	// let x = Date.parse(element.creationDate);
+	// console.log(x);
+	return cardsContainer.appendChild(createNewCard(element));
+});
 
 document.body.appendChild(aside());
 

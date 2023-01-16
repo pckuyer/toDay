@@ -135,6 +135,23 @@ function createNewCard(obj) {
 	return element;
 }
 
+function getAndSortLocalStorage() {
+	//create an object for each element in localstorage (this presuposes everything in local storage is a card)
+	const arr = [];
+	for (var i = 0; i < localStorage.length; i++) {
+		let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+		arr.push(obj);
+	}
+
+	//sort objects on id, which is date
+	arr.sort((a, b) => {
+		// return a.id < b.id ? a : b;
+		return a.id - b.id;
+	});
+
+	return arr;
+}
+
 function aside() {
 	const element = document.createElement("aside");
 	return element;
@@ -147,5 +164,6 @@ export {
 	newCardForm,
 	formContainer,
 	createNewCard,
+	getAndSortLocalStorage,
 	aside,
 };
