@@ -22,7 +22,7 @@ const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 
 	localStorage.setItem(`card${card.id}`, cardJSON);
 
-	// return card;
+	return card;
 };
 
 // Default export

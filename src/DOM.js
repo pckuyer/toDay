@@ -1,13 +1,9 @@
-import { newCardForm } from "./components.js";
+import { newCardForm, createNewCard } from "./components.js";
 import { cardEntry } from "./logic.js";
 
-function toggleNewCardInput() {
-	const plusButton = document.querySelector(".plusButton");
-	plusButton.style.display = "none";
-	document
-		.querySelector(".newCardButtonContainer")
-		.appendChild(newCardForm());
+import { newCardAnimation, newCardTiming } from "./animations.js";
 
+function submitNewCardInput() {
 	const submitNewCardBtn = document.querySelector("#submitNewCardBtn");
 	submitNewCardBtn.addEventListener(
 		"click",
@@ -33,7 +29,7 @@ function toggleNewCardInput() {
 			).value;
 
 			if (titleInput.length > 0) {
-				cardEntry(
+				const newCard = cardEntry(
 					titleInput,
 					descriptionInput,
 					dueDateInput,
@@ -41,10 +37,23 @@ function toggleNewCardInput() {
 				);
 				newCardForm.reset();
 
-				//should it go back to showing the plusbtn?  (this makes adding more cards a two step process)
+				// add new card to cards wrapper (is dom.js the right place? and this could be a function!!, is replicated index.js)
+				const cardsContainer = document.querySelector(".cardsWrapper");
+
+				const paul = createNewCard(newCard);
+
+				cardsContainer.insertBefore(
+					paul,
+					document.querySelector(".cardNode")
+				);
+
+				//animate
+				paul.animate(newCardAnimation, newCardTiming);
+			} else {
+				//what sould happen else?
 			}
 		}
 	);
 }
 
-export { toggleNewCardInput };
+export { submitNewCardInput };

@@ -16,14 +16,14 @@ aside {
 }
 
 .cardNode,
-.newCardButtonContainer {
+.formContainer {
 	background-color: rgba(200, 200, 200, 1);
 	width: 80%;
 	height: 140px;
 	margin-block: 10px;
 }
 
-.newCardButtonContainer {
+.formContainer {
 	display: grid;
 	place-items: center;
 }

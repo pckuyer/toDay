@@ -1,13 +1,16 @@
 To do:
 
--   form validation
--   remove the stupid plus sign (components)
--   create nice animation for new card. -> update immeaditely
--   look at order for cards.
+- create nice animation for new card.
+- Make Dom.js tidy again.
+- remove the stupid plus sign (components)
+- look at order for cards.
+- form validation
 
 Done:
 
--   give priority a default value of none (components.js)
+- give priority a default value of none (components.js)
+- "read" pirority of form (DOM.js)
+- due date does not function properly (?)
 
 Instructions
 
@@ -30,16 +33,16 @@ Instructions
 
 # My own ideas
 
--   many projects:
+- many projects:
 
-    -   diary
-    -   anki
-    -   to do's
-    -   notes
+  - diary
+  - anki
+  - to do's
+  - notes
 
--   entries (come up with better name) cannot be changed after midnight.
--   they can be ordered, given new status.
--   the idea is to every night go through them and order them, assign a status to them.
+- entries (come up with better name) cannot be changed after midnight.
+- they can be ordered, given new status.
+- the idea is to every night go through them and order them, assign a status to them.
 
 ==
 Time is central
@@ -47,9 +50,9 @@ The idea is to have cards that are linked to a day.
 
 You can
 
--   look back (review)
--   look forward (plan)
-    both can be done for day, week, month and year.
+- look back (review)
+- look forward (plan)
+  both can be done for day, week, month and year.
 
 then, you can cross search in some way (maybe by using tags, preferably by using a character)
 

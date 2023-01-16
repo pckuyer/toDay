@@ -6,11 +6,11 @@ import {
 	main,
 	cardsWrapper, // kan direct in main?
 	newCardForm, // not used here
-	newCardButtonContainer,
+	formContainer,
 	createNewCard,
 	aside,
 } from "./components.js";
-import { toggleNewCardInput } from "./DOM.js";
+import { submitNewCardInput } from "./DOM.js";
 
 //css modules
 import "../node_modules/reset-css/reset.css";
@@ -24,14 +24,10 @@ document.body.appendChild(main());
 document.querySelector("main").appendChild(cardsWrapper());
 
 const cardsContainer = document.querySelector(".cardsWrapper");
-cardsContainer.appendChild(newCardButtonContainer());
+cardsContainer.appendChild(formContainer());
 
-// for (let i = 0; i < allCards.length; i++) {
-// 	cardsContainer.appendChild(createNewCard(allCards[i]));
-// }
-
+//create a card for each element in localstorage (this presuposes everything in local storage is a card)
 for (var i = 0; i < localStorage.length; i++) {
-	// do something with localStorage.getItem(localStorage.key(i));
 	let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
 	cardsContainer.appendChild(createNewCard(obj));
 }
@@ -40,9 +36,4 @@ document.body.appendChild(aside());
 
 document.body.appendChild(footer());
 
-//is this the right place to put event listeners?
-
-window.addEventListener("DOMContentLoaded", (event) => {
-	const plusButton = document.querySelector(".plusButton");
-	plusButton.addEventListener("click", toggleNewCardInput);
-});
+submitNewCardInput();

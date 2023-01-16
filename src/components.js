@@ -108,15 +108,11 @@ function newCardForm() {
 	return element;
 }
 
-function newCardButtonContainer() {
+function formContainer() {
 	const element = document.createElement("div");
-	element.classList.add("newCardButtonContainer");
+	element.classList.add("formContainer");
 
-	const plusButton = document.createElement("div");
-	plusButton.classList.add("plusButton");
-	plusButton.innerHTML = "+";
-
-	element.appendChild(plusButton);
+	element.appendChild(newCardForm());
 
 	return element;
 }
@@ -149,7 +145,7 @@ export {
 	main,
 	cardsWrapper,
 	newCardForm,
-	newCardButtonContainer,
+	formContainer,
 	createNewCard,
 	aside,
 };
