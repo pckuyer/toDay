@@ -10,13 +10,15 @@ import {
 	getAndSortLocalStorage,
 	aside,
 } from "./components.js";
-import { submitNewCardInput } from "./DOM.js";
+import { submitNewCardInput, removeCardEventHandlers } from "./DOM.js";
 
 //css modules
 import "../node_modules/reset-css/reset.css";
 import "./style.css";
 import "./animations.css";
 import "./footer/footer.css";
+
+import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
 document.body.appendChild(header());
 
@@ -39,3 +41,4 @@ document.body.appendChild(aside());
 document.body.appendChild(footer());
 
 submitNewCardInput();
+removeCardEventHandlers();

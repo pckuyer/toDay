@@ -1,13 +1,20 @@
 To do:
 
+- make suer you can delete a card
+- animation for delete card
 - create nice animation for new card.
 - Make Dom.js tidy again.
-- remove the stupid plus sign (components)
-- look at order for cards.
 - form validation
+
+- make sure you can edit a todo
+
+- css
+- display create date nicer .
 
 Done:
 
+- look at order for cards.
+- remove the stupid plus sign (components)
 - give priority a default value of none (components.js)
 - "read" pirority of form (DOM.js)
 - due date does not function properly (?)
@@ -26,10 +33,6 @@ Instructions
           expand a single todo to see/edit its details
 
           delete a todo
-
-    Since you are probably already using webpack, adding external libraries from npm is a cinch! You might want to consider using the following useful library in your code:
-
-          date-fns gives you a bunch of handy functions for formatting and manipulating dates and times.
 
 # My own ideas
 

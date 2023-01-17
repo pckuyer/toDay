@@ -120,17 +120,39 @@ function formContainer() {
 function createNewCard(obj) {
 	const element = document.createElement("div");
 	element.classList.add("cardNode");
+	element.id = obj.id;
+
+	const iconWrapper = document.createElement("div");
+	iconWrapper.classList.add("iconWrapper");
+	iconWrapper.innerHTML = "<i class='fa-solid fa-trash'></i>";
+
+	element.appendChild(iconWrapper);
 
 	//is this the best way? Or is is better to type out all possible parameters?
-	for (let key in obj) {
-		const value = obj[key];
-		if (value) {
-			let entryLine = document.createElement("div");
-			entryLine.classList.add(key);
-			entryLine.innerHTML += key + ": " + value;
+	// for (let key in obj) {
+	// 	const value = obj[key];
+	// 	if (value) {
+	// 		let entryLine = document.createElement("div");
+	// 		entryLine.classList.add(key);
+	// 		entryLine.innerHTML += key + ": " + value;
+	// 		element.appendChild(entryLine);
+	// 	}
+	// }
+
+	function entryLine(name) {
+		if (obj[name]) {
+			const entryLine = document.createElement("div");
+			entryLine.classList.add(name);
+			entryLine.innerHTML = name + ": " + obj[name];
 			element.appendChild(entryLine);
 		}
 	}
+
+	entryLine("title");
+	entryLine("description");
+	entryLine("dueDate");
+	entryLine("priority");
+	entryLine("creationDate");
 
 	return element;
 }

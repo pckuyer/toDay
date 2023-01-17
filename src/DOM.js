@@ -1,5 +1,5 @@
 import { newCardForm, createNewCard } from "./components.js";
-import { cardEntry } from "./logic.js";
+import { cardEntry, deleteCard } from "./logic.js";
 
 import { newCardAnimation, newCardTiming } from "./animations.js";
 
@@ -56,4 +56,19 @@ function submitNewCardInput() {
 	);
 }
 
-export { submitNewCardInput };
+function removeCardEventHandlers() {
+	const trashBtns = document.querySelectorAll(".fa-trash");
+	trashBtns.forEach((btn) =>
+		btn.addEventListener("click", (e) => {
+			const card = e.target.closest(".cardNode");
+			//remove from dom
+			card.remove();
+			//animate
+
+			//delete from localstorage
+			deleteCard(card.id);
+		})
+	);
+}
+
+export { submitNewCardInput, removeCardEventHandlers };

@@ -1,5 +1,3 @@
-let allCards = [];
-
 const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 	// creating card object
 	let card = {};
@@ -25,5 +23,9 @@ const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 	return card;
 };
 
+const deleteCard = (id) => {
+	localStorage.removeItem(`card${id}`);
+};
+
 // Default export
-export { allCards, cardEntry };
+export { cardEntry, deleteCard };
