@@ -1,6 +1,5 @@
 To do:
 
-- make suer you can delete a card
 - animation for delete card
 - create nice animation for new card.
 - Make Dom.js tidy again.
@@ -13,6 +12,7 @@ To do:
 
 Done:
 
+- make suer you can delete a card
 - look at order for cards.
 - remove the stupid plus sign (components)
 - give priority a default value of none (components.js)

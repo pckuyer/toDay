@@ -1,9 +1,14 @@
 function header() {
 	const element = document.createElement("header");
+
+	const menuIcon = document.createElement("i");
+	menuIcon.classList.add("fa", "fa-bars", "menuIcon");
+	element.appendChild(menuIcon);
+
 	const h1 = document.createElement("h1");
 	h1.innerHTML = "toDay";
-
 	element.appendChild(h1);
+
 	return element;
 }
 
@@ -167,7 +172,6 @@ function getAndSortLocalStorage() {
 
 	//sort objects on id, which is date
 	arr.sort((a, b) => {
-		// return a.id < b.id ? a : b;
 		return a.id - b.id;
 	});
 
@@ -176,6 +180,35 @@ function getAndSortLocalStorage() {
 
 function aside() {
 	const element = document.createElement("aside");
+
+	function fillList(...names) {
+		const planList = document.createElement("ul");
+		for (let i = 0; i < names.length; i++) {
+			const item = document.createElement("li");
+			const link = document.createElement("a");
+			link.setAttribute("href", "#"); // maybe better to not use link and just style with css (also, add class or id or sth to queryselect)
+			link.innerHTML = names[i];
+			item.appendChild(link);
+			planList.appendChild(item);
+		}
+		return planList;
+	}
+
+	const planHeading = document.createElement("h2");
+	planHeading.innerHTML = "plan";
+	element.appendChild(planHeading);
+	element.appendChild(fillList("year", "month", "week", "day"));
+
+	const reviewHeading = document.createElement("h2");
+	reviewHeading.innerHTML = "review";
+	element.appendChild(reviewHeading);
+	element.appendChild(fillList("year", "month", "week", "day"));
+
+	const otherHeading = document.createElement("h2");
+	otherHeading.innerHTML = "Tags";
+	element.appendChild(otherHeading);
+	element.appendChild(fillList("all", "inbox", "deleted"));
+
 	return element;
 }
 

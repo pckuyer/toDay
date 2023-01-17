@@ -10,7 +10,11 @@ import {
 	getAndSortLocalStorage,
 	aside,
 } from "./components.js";
-import { submitNewCardInput, removeCardEventHandlers } from "./DOM.js";
+import {
+	submitNewCardInput,
+	removeCardEventHandlers,
+	addEventHanderMenyBarIcon,
+} from "./DOM.js";
 
 //css modules
 import "../node_modules/reset-css/reset.css";
@@ -42,3 +46,4 @@ document.body.appendChild(footer());
 
 submitNewCardInput();
 removeCardEventHandlers();
+addEventHanderMenyBarIcon();

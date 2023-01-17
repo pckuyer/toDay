@@ -63,6 +63,7 @@ function removeCardEventHandlers() {
 			const card = e.target.closest(".cardNode");
 			//remove from dom
 			card.remove();
+
 			//animate
 
 			//delete from localstorage
@@ -71,4 +72,21 @@ function removeCardEventHandlers() {
 	);
 }
 
-export { submitNewCardInput, removeCardEventHandlers };
+function addEventHanderMenyBarIcon() {
+	function toggleMenuBar() {
+		const aside = document.querySelector("aside");
+		const status = aside.style.display;
+		status === "block"
+			? (aside.style.display = "none")
+			: (aside.style.display = "block");
+	}
+
+	const menuIcon = document.querySelector(".menuIcon");
+	menuIcon.addEventListener("click", toggleMenuBar);
+}
+
+export {
+	submitNewCardInput,
+	removeCardEventHandlers,
+	addEventHanderMenyBarIcon,
+};
