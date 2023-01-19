@@ -1,4 +1,9 @@
-import { newCardForm, createNewCard } from "./components.js";
+import {
+	newCardForm,
+	createNewCard,
+	getLocalStorage,
+	renderCardsToDOM,
+} from "./components.js";
 import { cardEntry, deleteCard } from "./logic.js";
 
 import { newCardAnimation, newCardTiming } from "./animations.js";
@@ -72,7 +77,7 @@ function removeCardEventHandlers() {
 	);
 }
 
-function addEventHanderMenyBarIcon() {
+function addEventHanderMenuBarIcon() {
 	function toggleMenuBar() {
 		const aside = document.querySelector("aside");
 		const status = aside.style.display;
@@ -85,8 +90,51 @@ function addEventHanderMenyBarIcon() {
 	menuIcon.addEventListener("click", toggleMenuBar);
 }
 
+function addEventHandlerCategories() {
+	function filterCards(e) {
+		const cardsContainer = document.querySelector(".cardsWrapper");
+		cardsContainer.innerHTML = "";
+		const localStorage = getLocalStorage();
+		const period = e.target.classList.value;
+
+		function filterCardsByPeriod(days) {
+			// getting next weeks date
+			const futureDate = new Date();
+			futureDate.setDate(futureDate.getDate() + days);
+
+			// filter
+			const cardSelection = localStorage.filter(
+				(item) =>
+					Date.parse(item.dueDate) < futureDate &&
+					Date.parse(item.dueDate) > new Date()
+			);
+
+			//code from index.js -> turn into function
+			renderCardsToDOM(cardSelection);
+		}
+
+		if (period === "plan day") {
+			filterCardsByPeriod(1);
+		} else if (period === "plan week") {
+			filterCardsByPeriod(7);
+		} else if (period === "plan month") {
+			filterCardsByPeriod(30); // this aint right
+		} else if (period === "plan year") {
+			filterCardsByPeriod(365); // this aint right
+		} else if (period === "plan all") {
+			renderCardsToDOM(getLocalStorage());
+		}
+	}
+
+	const categories = document.querySelector("aside").querySelectorAll("li");
+	categories.forEach((link) => {
+		link.addEventListener("click", filterCards);
+	});
+}
+
 export {
 	submitNewCardInput,
 	removeCardEventHandlers,
-	addEventHanderMenyBarIcon,
+	addEventHanderMenuBarIcon,
+	addEventHandlerCategories,
 };

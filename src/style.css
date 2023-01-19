@@ -21,6 +21,12 @@ aside {
 	background-color: grey;
 }
 
+aside h2 {
+	font-size: 20px;
+	padding-top: 15px;
+	font-weight: 700;
+}
+
 main {
 	padding-top: 50px;
 }

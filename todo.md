@@ -1,7 +1,10 @@
 To do:
 
+- menu
+
 - animation for delete card
-- create nice animation for new card.
+- animation for new card.
+- animation for menubar ?
 - Make Dom.js tidy again.
 - form validation
 
@@ -31,8 +34,6 @@ Instructions
           different priorities)
 
           expand a single todo to see/edit its details
-
-          delete a todo
 
 # My own ideas
 

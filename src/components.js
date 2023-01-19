@@ -162,52 +162,64 @@ function createNewCard(obj) {
 	return element;
 }
 
-function getAndSortLocalStorage() {
+function getLocalStorage() {
 	//create an object for each element in localstorage (this presuposes everything in local storage is a card)
 	const arr = [];
 	for (var i = 0; i < localStorage.length; i++) {
 		let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
 		arr.push(obj);
 	}
+	return arr;
+}
 
+function sortLocalStorage(arr) {
 	//sort objects on id, which is date
 	arr.sort((a, b) => {
 		return a.id - b.id;
 	});
-
 	return arr;
+}
+
+function renderCardsToDOM(arr) {
+	const cardsContainer = document.querySelector(".cardsWrapper");
+	arr.forEach((element) => {
+		return cardsContainer.appendChild(createNewCard(element));
+	});
 }
 
 function aside() {
 	const element = document.createElement("aside");
 
-	function fillList(...names) {
+	function fillList(category, ...names) {
 		const planList = document.createElement("ul");
 		for (let i = 0; i < names.length; i++) {
 			const item = document.createElement("li");
-			const link = document.createElement("a");
-			link.setAttribute("href", "#"); // maybe better to not use link and just style with css (also, add class or id or sth to queryselect)
-			link.innerHTML = names[i];
-			item.appendChild(link);
+			item.innerHTML = names[i];
+			item.classList.add(category, names[i]);
 			planList.appendChild(item);
 		}
 		return planList;
 	}
 
+	//plan
 	const planHeading = document.createElement("h2");
 	planHeading.innerHTML = "plan";
 	element.appendChild(planHeading);
-	element.appendChild(fillList("year", "month", "week", "day"));
+	element.appendChild(
+		fillList("plan", "all", "year", "month", "week", "day")
+	);
 
-	const reviewHeading = document.createElement("h2");
-	reviewHeading.innerHTML = "review";
-	element.appendChild(reviewHeading);
-	element.appendChild(fillList("year", "month", "week", "day"));
+	//review
+	// const reviewHeading = document.createElement("h2");
+	// reviewHeading.innerHTML = "review";
+	// element.appendChild(reviewHeading);
+	// element.appendChild(fillList("review", "year", "month", "week", "day"));
 
+	//other tags
 	const otherHeading = document.createElement("h2");
-	otherHeading.innerHTML = "Tags";
+	otherHeading.innerHTML = "tags";
 	element.appendChild(otherHeading);
-	element.appendChild(fillList("all", "inbox", "deleted"));
+	element.appendChild(fillList("tags", "all", "inbox", "deleted"));
 
 	return element;
 }
@@ -219,6 +231,8 @@ export {
 	newCardForm,
 	formContainer,
 	createNewCard,
-	getAndSortLocalStorage,
+	getLocalStorage,
+	sortLocalStorage,
+	renderCardsToDOM,
 	aside,
 };

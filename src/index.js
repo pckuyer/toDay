@@ -7,13 +7,16 @@ import {
 	newCardForm, // not used here
 	formContainer,
 	createNewCard,
-	getAndSortLocalStorage,
+	getLocalStorage,
+	sortLocalStorage,
+	renderCardsToDOM,
 	aside,
 } from "./components.js";
 import {
 	submitNewCardInput,
 	removeCardEventHandlers,
-	addEventHanderMenyBarIcon,
+	addEventHanderMenuBarIcon,
+	addEventHandlerCategories,
 } from "./DOM.js";
 
 //css modules
@@ -29,16 +32,14 @@ document.body.appendChild(header());
 document.body.appendChild(main());
 document.querySelector("main").appendChild(cardsWrapper());
 
+//does this need to be here?
 const cardsContainer = document.querySelector(".cardsWrapper");
 cardsContainer.appendChild(formContainer());
 
-const allCards = getAndSortLocalStorage();
-
-allCards.forEach((element) => {
-	// let x = Date.parse(element.creationDate);
-	// console.log(x);
-	return cardsContainer.appendChild(createNewCard(element));
-});
+//work with cards
+const allCards = getLocalStorage();
+sortLocalStorage(allCards);
+renderCardsToDOM(allCards);
 
 document.body.appendChild(aside());
 
@@ -46,4 +47,5 @@ document.body.appendChild(footer());
 
 submitNewCardInput();
 removeCardEventHandlers();
-addEventHanderMenyBarIcon();
+addEventHanderMenuBarIcon();
+addEventHandlerCategories();
