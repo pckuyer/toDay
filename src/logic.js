@@ -16,9 +16,16 @@ const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 	//set unique identifier
 	card.id = Date.now();
 
-	const cardJSON = JSON.stringify(card);
+	const allCardsArr =
+		localStorage.getItem("cards") !== null
+			? JSON.parse(localStorage.getItem("cards"))
+			: [];
 
-	localStorage.setItem(`card${card.id}`, cardJSON);
+	allCardsArr.push(card);
+
+	const jso = JSON.stringify(allCardsArr);
+
+	localStorage.setItem("cards", jso);
 
 	return card;
 };

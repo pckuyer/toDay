@@ -164,11 +164,14 @@ function createNewCard(obj) {
 
 function getLocalStorage() {
 	//create an object for each element in localstorage (this presuposes everything in local storage is a card)
-	const arr = [];
-	for (var i = 0; i < localStorage.length; i++) {
-		let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-		arr.push(obj);
-	}
+	// const arr = [];
+
+	const arr = JSON.parse(localStorage.getItem("cards"));
+
+	// for (var i = 0; i < localStorage.length; i++) {
+	// 	let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+	// 	arr.push(obj);
+	// }
 	return arr;
 }
 

@@ -1,5 +1,7 @@
 To do:
 
+- tag functionality
+
 - menu
 
 - animation for delete card
