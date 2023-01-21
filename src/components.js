@@ -163,31 +163,30 @@ function createNewCard(obj) {
 }
 
 function getLocalStorage() {
-	//create an object for each element in localstorage (this presuposes everything in local storage is a card)
-	// const arr = [];
-
+	//if exists
 	const arr = JSON.parse(localStorage.getItem("cards"));
 
-	// for (var i = 0; i < localStorage.length; i++) {
-	// 	let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
-	// 	arr.push(obj);
-	// }
 	return arr;
 }
 
 function sortLocalStorage(arr) {
 	//sort objects on id, which is date
-	arr.sort((a, b) => {
-		return a.id - b.id;
-	});
-	return arr;
+	//if exists
+	if (arr) {
+		arr.sort((a, b) => {
+			return a.id - b.id;
+		});
+		return arr;
+	}
 }
 
 function renderCardsToDOM(arr) {
-	const cardsContainer = document.querySelector(".cardsWrapper");
-	arr.forEach((element) => {
-		return cardsContainer.appendChild(createNewCard(element));
-	});
+	if (arr) {
+		const cardsContainer = document.querySelector(".cardsWrapper");
+		arr.forEach((element) => {
+			return cardsContainer.appendChild(createNewCard(element));
+		});
+	}
 }
 
 function aside() {

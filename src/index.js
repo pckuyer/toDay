@@ -13,8 +13,8 @@ import {
 	aside,
 } from "./components.js";
 import {
-	submitNewCardInput,
-	removeCardEventHandlers,
+	addEventHandlerSubmitNewCardInput,
+	addEventHandlerRemoveCard,
 	addEventHanderMenuBarIcon,
 	addEventHandlerCategories,
 } from "./DOM.js";
@@ -37,15 +37,15 @@ const cardsContainer = document.querySelector(".cardsWrapper");
 cardsContainer.appendChild(formContainer());
 
 //work with cards
-const allCards = getLocalStorage();
-sortLocalStorage(allCards);
-renderCardsToDOM(allCards);
+sortLocalStorage(getLocalStorage());
+renderCardsToDOM(getLocalStorage());
 
 document.body.appendChild(aside());
 
 document.body.appendChild(footer());
 
-submitNewCardInput();
-removeCardEventHandlers();
+//event listeners
+addEventHandlerSubmitNewCardInput();
+addEventHandlerRemoveCard();
 addEventHanderMenuBarIcon();
 addEventHandlerCategories();

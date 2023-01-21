@@ -8,7 +8,7 @@ import { cardEntry, deleteCard } from "./logic.js";
 
 import { newCardAnimation, newCardTiming } from "./animations.js";
 
-function submitNewCardInput() {
+function addEventHandlerSubmitNewCardInput() {
 	const submitNewCardBtn = document.querySelector("#submitNewCardBtn");
 	submitNewCardBtn.addEventListener(
 		"click",
@@ -61,7 +61,7 @@ function submitNewCardInput() {
 	);
 }
 
-function removeCardEventHandlers() {
+function addEventHandlerRemoveCard() {
 	const trashBtns = document.querySelectorAll(".fa-trash");
 	trashBtns.forEach((btn) =>
 		btn.addEventListener("click", (e) => {
@@ -133,8 +133,8 @@ function addEventHandlerCategories() {
 }
 
 export {
-	submitNewCardInput,
-	removeCardEventHandlers,
+	addEventHandlerSubmitNewCardInput,
+	addEventHandlerRemoveCard,
 	addEventHanderMenuBarIcon,
 	addEventHandlerCategories,
 };

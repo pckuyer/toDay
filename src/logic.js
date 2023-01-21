@@ -31,7 +31,12 @@ const cardEntry = (title, description = NaN, dueDate = NaN, priority = NaN) => {
 };
 
 const deleteCard = (id) => {
-	localStorage.removeItem(`card${id}`);
+	const allCards = JSON.parse(localStorage.getItem("cards"));
+	const result = allCards.filter((card) => card.id !== id);
+	console.log(typeof id);
+	console.log(allCards.map((elem) => elem.id === parseInt(id)));
+	const jso = JSON.stringify(result);
+	localStorage.setItem("cards", jso);
 };
 
 // Default export
