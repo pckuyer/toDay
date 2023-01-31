@@ -108,7 +108,7 @@ function addEventHandlerCategories() {
 
 		//perhaps prefill tag here
 
-		const localStorage = getLocalStorage();
+		const ls = getLocalStorage();
 		const period = e.target.classList.value;
 
 		function filterCardsByPeriod(days) {
@@ -117,13 +117,12 @@ function addEventHandlerCategories() {
 			futureDate.setDate(futureDate.getDate() + days);
 
 			// filter
-			const cardSelection = localStorage.filter(
+			const cardSelection = ls.filter(
 				(item) =>
 					Date.parse(item.dueDate) < futureDate &&
 					Date.parse(item.dueDate) > new Date()
 			);
 
-			//code from index.js -> turn into function
 			renderCardsToDOM(cardSelection);
 		}
 
@@ -140,10 +139,26 @@ function addEventHandlerCategories() {
 		}
 	}
 
-	const categories = document.querySelector("aside").querySelectorAll("li");
+	const categories = document.querySelector("ul.plan").querySelectorAll("li");
 	categories.forEach((link) => {
 		link.addEventListener("click", filterCards);
 	});
+
+	function filterCardsByProjects(e) {
+		const cardsContainer = document.querySelector(".cardsWrapper");
+
+		while (cardsContainer.childNodes.length > 1) {
+			cardsContainer.removeChild(cardsContainer.lastChild);
+		}
+
+		const filterByProject = getLocalStorage().filter(
+			(item) => item.project === e.target.innerHTML
+		);
+		renderCardsToDOM(filterByProject);
+	}
+
+	const projectLinks = document.querySelector("ul.projects");
+	projectLinks.addEventListener("click", filterCardsByProjects);
 }
 
 export {

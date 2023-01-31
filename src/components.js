@@ -207,6 +207,7 @@ function aside() {
 
 	function fillList(category, ...names) {
 		const planList = document.createElement("ul");
+		planList.classList.add(category);
 		for (let i = 0; i < names.length; i++) {
 			const item = document.createElement("li");
 			item.innerHTML = names[i];
@@ -234,12 +235,8 @@ function aside() {
 	const otherHeading = document.createElement("h2");
 	otherHeading.innerHTML = "projects";
 	element.appendChild(otherHeading);
-	element.appendChild(fillList("projects", "all", "inbox"));
-
 	const projectsArr = JSON.parse(localStorage.getItem("projects"));
-	if (projectsArr) {
-		element.appendChild(fillList("projects", ...projectsArr));
-	}
+	element.appendChild(fillList("projects", "all", "inbox", ...projectsArr));
 
 	return element;
 }

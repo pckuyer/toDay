@@ -2,13 +2,16 @@ To do:
 
 - tag functionality
 
+  - set default value to inbox (wont work for some reason)
+  - project functionality can be broken by entering comma into input field
+
 - menu
 
 - animation for delete card
 - animation for new card.
 - animation for menubar ?
 - Make Dom.js tidy again.
-- form validation
+- form validation (non existing dates)
 
 - make sure you can edit a todo
 
