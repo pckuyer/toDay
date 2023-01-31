@@ -13,9 +13,9 @@ const cardEntry = (
 	// parameters as keys to this object
 	card.title = title;
 	card.description = description;
+	card.project = project;
 	card.dueDate = dueDate;
 	card.priority = priority;
-	card.project = project;
 
 	//which other parameters / properties will a card have? Notes? Attachment? Checklist?
 

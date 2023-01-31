@@ -64,6 +64,23 @@ function newCardForm() {
 	//input project
 	const inputProject = createFormLabelAndInput("project", "text");
 	inputProject.querySelector("input").setAttribute("placeholder", "project");
+	inputProject.querySelector("input").setAttribute("list", "projectOptions");
+
+	const projectList = document.createElement("datalist");
+	projectList.id = "projectOptions";
+
+	//get all projects from localstorage
+	const projectsArr = JSON.parse(localStorage.getItem("projects"));
+
+	if (projectsArr) {
+		projectsArr.forEach((project) => {
+			let projectOption = document.createElement("option");
+			projectOption.setAttribute("value", project);
+			projectList.appendChild(projectOption);
+		});
+	}
+
+	inputProject.appendChild(projectList);
 	form.appendChild(inputProject);
 
 	//input Date
@@ -213,11 +230,16 @@ function aside() {
 	// element.appendChild(reviewHeading);
 	// element.appendChild(fillList("review", "year", "month", "week", "day"));
 
-	//other tags
+	//projects
 	const otherHeading = document.createElement("h2");
-	otherHeading.innerHTML = "tags";
+	otherHeading.innerHTML = "projects";
 	element.appendChild(otherHeading);
-	element.appendChild(fillList("tags", "all", "inbox", "deleted"));
+	element.appendChild(fillList("projects", "all", "inbox"));
+
+	const projectsArr = JSON.parse(localStorage.getItem("projects"));
+	if (projectsArr) {
+		element.appendChild(fillList("projects", ...projectsArr));
+	}
 
 	return element;
 }
