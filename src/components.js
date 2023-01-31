@@ -61,6 +61,11 @@ function newCardForm() {
 		.setAttribute("placeholder", "description");
 	form.appendChild(inputDescription);
 
+	//input project
+	const inputProject = createFormLabelAndInput("project", "text");
+	inputProject.querySelector("input").setAttribute("placeholder", "project");
+	form.appendChild(inputProject);
+
 	//input Date
 	form.appendChild(createFormLabelAndInput("due date", "date", "due date"));
 
@@ -133,17 +138,6 @@ function createNewCard(obj) {
 
 	element.appendChild(iconWrapper);
 
-	//is this the best way? Or is is better to type out all possible parameters?
-	// for (let key in obj) {
-	// 	const value = obj[key];
-	// 	if (value) {
-	// 		let entryLine = document.createElement("div");
-	// 		entryLine.classList.add(key);
-	// 		entryLine.innerHTML += key + ": " + value;
-	// 		element.appendChild(entryLine);
-	// 	}
-	// }
-
 	function entryLine(name) {
 		if (obj[name]) {
 			const entryLine = document.createElement("div");
@@ -155,6 +149,7 @@ function createNewCard(obj) {
 
 	entryLine("title");
 	entryLine("description");
+	entryLine("project");
 	entryLine("dueDate");
 	entryLine("priority");
 	entryLine("creationDate");
@@ -182,6 +177,7 @@ function sortLocalStorage(arr) {
 
 function renderCardsToDOM(arr) {
 	if (arr) {
+		arr.reverse();
 		const cardsContainer = document.querySelector(".cardsWrapper");
 		arr.forEach((element) => {
 			return cardsContainer.appendChild(createNewCard(element));

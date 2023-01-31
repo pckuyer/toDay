@@ -24,6 +24,10 @@ function addEventHandlerSubmitNewCardInput() {
 				"input[name='description']"
 			).value;
 
+			const projectInput = newCardForm.querySelector(
+				"input[name='project']"
+			).value;
+
 			const dueDateInput = newCardForm.querySelector(
 				"input[name='due date']"
 			).value;
@@ -33,10 +37,13 @@ function addEventHandlerSubmitNewCardInput() {
 				"select[name='priority'] option:checked"
 			).value;
 
+			// form validation only chekcs title length > 0
+			// It should also check date (not existing dates are not added to card, without error warning)
 			if (titleInput.length > 0) {
 				const newCard = cardEntry(
 					titleInput,
 					descriptionInput,
+					projectInput,
 					dueDateInput,
 					priorityInput
 				);
@@ -62,9 +69,10 @@ function addEventHandlerSubmitNewCardInput() {
 }
 
 function addEventHandlerRemoveCard() {
-	const trashBtns = document.querySelectorAll(".fa-trash");
-	trashBtns.forEach((btn) =>
-		btn.addEventListener("click", (e) => {
+	const cardsWrapper = document.querySelector(".cardsWrapper");
+
+	cardsWrapper.addEventListener("click", (e) => {
+		if (e.target.classList.value.includes("fa-trash")) {
 			const card = e.target.closest(".cardNode");
 			//remove from dom
 			card.remove();
@@ -73,8 +81,8 @@ function addEventHandlerRemoveCard() {
 
 			//delete from localstorage
 			deleteCard(card.id);
-		})
-	);
+		}
+	});
 }
 
 function addEventHanderMenuBarIcon() {
@@ -93,7 +101,13 @@ function addEventHanderMenuBarIcon() {
 function addEventHandlerCategories() {
 	function filterCards(e) {
 		const cardsContainer = document.querySelector(".cardsWrapper");
-		cardsContainer.innerHTML = "";
+
+		while (cardsContainer.childNodes.length > 1) {
+			cardsContainer.removeChild(cardsContainer.lastChild);
+		}
+
+		//perhaps prefill tag here
+
 		const localStorage = getLocalStorage();
 		const period = e.target.classList.value;
 

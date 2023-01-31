@@ -17,6 +17,9 @@ To do:
 
 Done:
 
+- make sure the card form stays when clicking an event.
+- rewrite sort function
+- add event listener for delete card (now it is only added after refresh)
 - make suer you can delete a card
 - look at order for cards.
 - remove the stupid plus sign (components)
