@@ -151,10 +151,14 @@ function addEventHandlerCategories() {
 			cardsContainer.removeChild(cardsContainer.lastChild);
 		}
 
-		const filterByProject = getLocalStorage().filter(
-			(item) => item.project === e.target.innerHTML
-		);
-		renderCardsToDOM(filterByProject);
+		if (e.target.innerHTML === "all") {
+			renderCardsToDOM(getLocalStorage());
+		} else {
+			const filterByProject = getLocalStorage().filter(
+				(item) => item.project === e.target.innerHTML
+			);
+			renderCardsToDOM(filterByProject);
+		}
 	}
 
 	const projectLinks = document.querySelector("ul.projects");

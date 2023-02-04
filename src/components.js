@@ -97,7 +97,7 @@ function newCardForm() {
 
 	const option0 = document.createElement("option");
 	option0.innerHTML = "none";
-	option0.setAttribute("value", NaN);
+	option0.setAttribute("value", undefined);
 	option0.setAttribute("selected", "selected");
 	prioritySelect.appendChild(option0);
 
@@ -235,8 +235,15 @@ function aside() {
 	const otherHeading = document.createElement("h2");
 	otherHeading.innerHTML = "projects";
 	element.appendChild(otherHeading);
-	const projectsArr = JSON.parse(localStorage.getItem("projects"));
-	element.appendChild(fillList("projects", "all", "inbox", ...projectsArr));
+
+
+	const projectsArr = JSON.parse(localStorage.getItem("cards"));
+
+	var arr = projectsArr.map(x => x.project)
+	arr.unshift("all", "inbox");
+	var uniq = [...new Set(arr)];
+
+	element.appendChild(fillList("projects", ...uniq));
 
 	return element;
 }

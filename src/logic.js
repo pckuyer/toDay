@@ -1,9 +1,9 @@
 const cardEntry = (
 	title,
-	description = NaN,
-	project = NaN,
-	dueDate = NaN,
-	priority = NaN
+	description,
+	project,
+	dueDate,
+	priority
 
 	//change NaN into Null?
 ) => {
@@ -13,7 +13,13 @@ const cardEntry = (
 	// parameters as keys to this object
 	card.title = title;
 	card.description = description;
-	card.project = project;
+
+	if (project === "") {
+		card.project = "inbox";
+	} else {
+		card.project = project;
+	}
+
 	card.dueDate = dueDate;
 	card.priority = priority;
 
@@ -38,10 +44,7 @@ const cardEntry = (
 	localStorage.setItem("cards", jso);
 
 	//projects array in local storage?
-	const projectsArr =
-		localStorage.getItem("projects") !== null
-			? JSON.parse(localStorage.getItem("projects"))
-			: [];
+	const projectsArr = JSON.parse(localStorage.getItem("projects"));
 
 	if (!projectsArr.includes(card.project)) {
 		projectsArr.push(card.project);

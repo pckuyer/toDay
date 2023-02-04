@@ -40,6 +40,11 @@ cardsContainer.appendChild(formContainer());
 sortLocalStorage(getLocalStorage());
 renderCardsToDOM(getLocalStorage());
 
+if (localStorage.getItem("projects") === null) {
+	const projectJSON = JSON.stringify(["all", "inbox"]);
+	localStorage.setItem("projects", projectJSON);
+}
+
 document.body.appendChild(aside());
 
 document.body.appendChild(footer());

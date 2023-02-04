@@ -1,11 +1,15 @@
 To do:
 
-- tag functionality
+- priority shows on card NaN. 
 
-  - set default value to inbox (wont work for some reason)
-  - project functionality can be broken by entering comma into input field
+- make sure you can edit a todo
 
-- menu
+# aside / projects
+- project functionality can be broken by entering comma into input field (form validation)
+- aside needs refresh after new project
+- delete project from aside when no cards have it. 
+(achteraf was het misschien beter om geen projects obj te maken, maar gewoon de kaarten te filteren)
+
 
 - animation for delete card
 - animation for new card.
@@ -13,13 +17,13 @@ To do:
 - Make Dom.js tidy again.
 - form validation (non existing dates)
 
-- make sure you can edit a todo
-
 - css
 - display create date nicer .
 
 Done:
 
+- in menu: all does not work
+- tag functionality
 - make sure the card form stays when clicking an event.
 - rewrite sort function
 - add event listener for delete card (now it is only added after refresh)
